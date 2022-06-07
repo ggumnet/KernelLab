@@ -1,0 +1,1 @@
+cmd_/home/ggumnet/kernellab-handout/ptree/dbfs_ptree.ko := ld -r  -m elf_x86_64  --build-id=sha1  -T scripts/module.lds -o /home/ggumnet/kernellab-handout/ptree/dbfs_ptree.ko /home/ggumnet/kernellab-handout/ptree/dbfs_ptree.o /home/ggumnet/kernellab-handout/ptree/dbfs_ptree.mod.o;  true

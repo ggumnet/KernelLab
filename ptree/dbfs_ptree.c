@@ -15,25 +15,30 @@ static ssize_t write_pid_to_input(struct file *fp,
 {
         pid_t input_pid;
 
-        //sscanf(user_buffer, "%u", &input_pid);
-        //curr = // Find task_struct using input_pid. Hint: pid_task
+        copy_from_user(fp->private_data+*position, user_buffer, length);
+        
+        printk("%s", fp->private_data+*position);
 
-        // Tracing process tree from input_pid to init(1) process
+        //curr = pid_task(find_vpid(input_pid), PIDTYPE_PID);
+        return length;
+}
 
-        // Make Output Format string: process_command (process_id)
-
+static ssize_t read_pid_from_ptree(struct file *fp, 
+                                char __user *user_buffer, 
+                                size_t length, 
+                                loff_t *position)
+{
+       
         return length;
 }
 
 static const struct file_operations dbfs_fops = {
         .write = write_pid_to_input,
+        .read = read_pid_from_ptree,
 };
 
 static int __init dbfs_module_init(void)
 {
-        // Implement init module code
-
-#if 0
         dir = debugfs_create_dir("ptree", NULL);
         
         if (!dir) {
@@ -41,9 +46,8 @@ static int __init dbfs_module_init(void)
                 return -1;
         }
 
-        inputdir = debugfs_create_file("input", , , , );
-        ptreedir = debugfs_create_("ptree", , , ); // Find suitable debugfs API
-#endif
+        inputdir = debugfs_create_file("input", 0777, dir , NULL , &dbfs_fops);
+        ptreedir = debugfs_create_file("ptree", 0777, dir , NULL, &dbfs_fops); // Find suitable debugfs API
 	
 	printk("dbfs_ptree module initialize done\n");
 
