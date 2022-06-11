@@ -30,7 +30,9 @@ __used __section("__versions") = {
 	{ 0xd9726f80, "module_layout" },
 	{ 0xb3b1be2f, "debugfs_create_file" },
 	{ 0xbca5adcc, "debugfs_create_dir" },
+	{ 0x3854774b, "kstrtoll" },
 	{ 0xc5850110, "printk" },
+	{ 0xc959d152, "__stack_chk_fail" },
 	{ 0x13c49cc2, "_copy_from_user" },
 	{ 0x88db9f48, "__check_object_size" },
 	{ 0xbdfb6dbb, "__fentry__" },
@@ -39,4 +41,4 @@ __used __section("__versions") = {
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "480C6C73DE1FB768E2571E7");
+MODULE_INFO(srcversion, "E6D1B8DBFEF5324AC9DAEE5");
