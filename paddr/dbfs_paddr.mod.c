@@ -30,19 +30,17 @@ __used __section("__versions") = {
 	{ 0xd9726f80, "module_layout" },
 	{ 0xb3b1be2f, "debugfs_create_file" },
 	{ 0xbca5adcc, "debugfs_create_dir" },
-	{ 0x6b10bee1, "_copy_to_user" },
-	{ 0x88db9f48, "__check_object_size" },
-	{ 0x754d539c, "strlen" },
-	{ 0xc959d152, "__stack_chk_fail" },
-	{ 0xe914e41e, "strcpy" },
+	{ 0x7cd8d75e, "page_offset_base" },
+	{ 0x1d19f77b, "physical_mask" },
+	{ 0x50d4de4, "pv_ops" },
+	{ 0x72d79d83, "pgdir_shift" },
 	{ 0x53377cb8, "pid_task" },
 	{ 0x5f3da946, "find_vpid" },
 	{ 0xc5850110, "printk" },
-	{ 0xbcab6ee6, "sscanf" },
 	{ 0xbdfb6dbb, "__fentry__" },
 };
 
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "938A3D74A7E490B310A0360");
+MODULE_INFO(srcversion, "21C112F804DB26ADE50AA0E");

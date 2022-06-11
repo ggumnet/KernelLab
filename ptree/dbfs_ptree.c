@@ -17,35 +17,15 @@ static ssize_t write_pid_to_input(struct file *fp,
                                 size_t length, 
                                 loff_t *position)
 {
-        long* input_pid;
+        pid_t input_pid;
         //pid_t input_pid;
 
-        //copy_from_user(fp->private_data+*position, user_buffer, length);
-        //strncpy(malloc_buff,user_buffer, length);
-        //printk("%s\n", malloc_buff);
-        //printk("%s\n", fp->private_data+*position);
-
-        char buf[32];
-	size_t buf_size;
-	unsigned long value;
-	buf_size = min(length, (sizeof(buf)-1));
-        
-	if (copy_from_user(buf, user_buffer, buf_size))
-		return -EFAULT;
-        buf[buf_size] = '\0';
-        printk("%s\n", buf);
-        //printk("%d\n", strlen(buf));
-	
-        kstrtol(buf, 10, input_pid);
-        printk("pid: %ld\n", *input_pid);
-
-        return buf_size;
-
+        sscanf(user_buffer, "%u", &input_pid);
+        printk("%u\n", input_pid);
 
         struct task_struct *temp;
         char *temp_str;
 
-        /*
         curr = pid_task(find_vpid(input_pid), PIDTYPE_PID);
         strcpy(result_str, "");
         temp = curr;
@@ -57,8 +37,8 @@ static ssize_t write_pid_to_input(struct file *fp,
                 strcat(temp_str, ")\n");
                 strcat(temp_str, result_str);
                 strcpy(result_str, temp_str);
-        }*/
-	return buf_size;
+                if(temp->pid == 1) return length;
+        }
 }
 
 static ssize_t read_pid_from_ptree(struct file *fp, 
@@ -66,7 +46,9 @@ static ssize_t read_pid_from_ptree(struct file *fp,
                                 size_t length, 
                                 loff_t *position)
 {
-        return length;
+        ssize_t len = strlen(result_str);
+        copy_to_user(user_buffer, result_str, len);
+        return len;
 }
 
 static const struct file_operations dbfs_fops = {
