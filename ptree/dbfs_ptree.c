@@ -23,6 +23,8 @@ static ssize_t write_pid_to_input(struct file *fp,
         sscanf(user_buffer, "%u", &input_pid);
         printk("%u\n", input_pid);
 
+        return length;
+
         struct task_struct *temp;
         char *temp_str;
 
@@ -78,6 +80,7 @@ static void __exit dbfs_module_exit(void)
 {
         // Implement exit module code
 	//kfree(malloc_buff);
+        debugfs_remove_recursive(dir);
 	printk("dbfs_ptree module exit\n");
 }
 

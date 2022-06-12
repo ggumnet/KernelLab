@@ -79,6 +79,7 @@ static void __exit dbfs_module_exit(void)
 {
         // Implement exit module
 
+        debugfs_remove_recursive(dir);
 	printk("dbfs_paddr module exit\n");
 }
 

@@ -28,15 +28,13 @@ MODULE_INFO(retpoline, "Y");
 static const struct modversion_info ____versions[]
 __used __section("__versions") = {
 	{ 0xd9726f80, "module_layout" },
+	{ 0x3da95b0c, "debugfs_remove" },
 	{ 0xb3b1be2f, "debugfs_create_file" },
 	{ 0xbca5adcc, "debugfs_create_dir" },
 	{ 0x6b10bee1, "_copy_to_user" },
 	{ 0x88db9f48, "__check_object_size" },
 	{ 0x754d539c, "strlen" },
 	{ 0xc959d152, "__stack_chk_fail" },
-	{ 0xe914e41e, "strcpy" },
-	{ 0x53377cb8, "pid_task" },
-	{ 0x5f3da946, "find_vpid" },
 	{ 0xc5850110, "printk" },
 	{ 0xbcab6ee6, "sscanf" },
 	{ 0xbdfb6dbb, "__fentry__" },
@@ -45,4 +43,4 @@ __used __section("__versions") = {
 MODULE_INFO(depends, "");
 
 
-MODULE_INFO(srcversion, "938A3D74A7E490B310A0360");
+MODULE_INFO(srcversion, "8ED4C80ECB9A963769F0E48");
